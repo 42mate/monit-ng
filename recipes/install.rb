@@ -9,11 +9,7 @@ when 'repo'
   # Monit is not in the default repositories
   include_recipe 'yum-epel' if platform_family?('rhel') && !platform?('amazon')
   if platform?('ubuntu')
-    include_recipe 'dpkg_autostart'
-    dpkg_autostart 'monit' do
-      allow false
-    end
-
+    include_recipe 'deb_pkg_unautostart'
     include_recipe 'ubuntu'
   end
 
